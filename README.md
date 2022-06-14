@@ -122,3 +122,31 @@ terraform destroy
 ## License
 
 [License](../LICENSE.md)
+
+
+```mermaid
+graph LR;
+    subgraph Kubernetes_cluster;
+        Deployment_hello_world --> ReplicaSet_hello_world
+        ReplicaSet_hello_world --> Pod_hello_world1
+        Deployment_cluster_autoscaler --> ReplicaSet_cluster_autoscaler
+        ReplicaSet_cluster_autoscaler --> Pod_cluster_autoscaler1
+        Service_hello_world --> Pod_hello_world1
+    end
+    subgraph AWS;
+        Pod_cluster_autoscaler1 --send_scale_command--> EC2_node_autoscaler
+        Load_Balancer --proxy_traffic--> Service_hello_world
+            EC2_node_autoscaler --create/remove--> EC2_node1
+            EC2_node_autoscaler --create/remove--> EC2_node2
+            EC2_node_autoscaler --create/remove--> EC2_node3
+        subgraph EKS_cluster;
+            EC2_node1
+            EC2_node2
+            EC2_node3
+        end
+    end
+        subgraph Github;
+        Terraform_scripts --create_EC2_instance-->EC2_node_autoscaler
+        Application_yamls --create_deployment--> Deployment_hello_world
+    end
+```

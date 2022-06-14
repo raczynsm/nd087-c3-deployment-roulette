@@ -1,0 +1,42 @@
+CA037501:nd087-c3-deployment-roulette raczynsm$ kubectl run debug --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+If you don't see a command prompt, try pressing enter.
+bash-5.1# curl 172.20.29.30:80
+<html>
+<h1>This is version 1</h1>
+</html>
+bash-5.1# curl 172.20.29.30:80
+<html>
+<h1>This is version 1</h1>
+</html>
+bash-5.1# curl 172.20.29.30:80
+<html>
+<h1>This is version 2</h1>
+</html>
+bash-5.1# curl 172.20.29.30:80
+<html>
+<h1>This is version 2</h1>
+</html>
+bash-5.1# curl 172.20.29.30:80
+<html>
+<h1>This is version 1</h1>
+</html>
+bash-5.1# curl 172.20.29.30:80
+<html>
+<h1>This is version 2</h1>
+</html>
+bash-5.1# curl 172.20.29.30:80
+<html>
+<h1>This is version 2</h1>
+</html>
+bash-5.1# curl 172.20.29.30:80
+<html>
+<h1>This is version 1</h1>
+</html>
+bash-5.1# curl 172.20.29.30:80
+<html>
+<h1>This is version 2</h1>
+</html>
+bash-5.1# curl 172.20.29.30:80
+<html>
+<h1>This is version 1</h1>
+</html>
